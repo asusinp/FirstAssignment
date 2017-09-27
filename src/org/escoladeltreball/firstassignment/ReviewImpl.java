@@ -3,6 +3,8 @@
  */
 package org.escoladeltreball.firstassignment;
 
+import java.util.ArrayList;
+
 /**
  * @author Pep Méndez
  *
@@ -46,7 +48,25 @@ public final class ReviewImpl implements Review {
 	 */
 	@Override
 	public int[] merge(int[] values, int n) {
-		return null;
+	    int pos = 0;
+	    ArrayList<Integer> foo = new ArrayList<Integer>();    
+	    for (int i = 0; i < values.length; i++) {
+	      if (values[i] <= n) {
+	        pos = i+1;
+	      }
+	      foo.add(values[i]);
+	    }	    
+	    if (n > foo.get(foo.size() - 1)) {
+	      foo.add(foo.size(), n);
+	    } else {
+	      foo.add(pos, n);
+	    }	    
+	    Integer[] newValues = foo.toArray(new Integer[foo.size()]);
+	    int[] result = new int[newValues.length];
+	    for (int j = 0; j < newValues.length; j++) {
+	      result[j] = newValues[j];
+	    }
+	    return result;
 	}
 
 	/*
