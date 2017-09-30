@@ -76,8 +76,31 @@ public final class ReviewImpl implements Review {
 	 * NOTE: Don't waste space!!!
 	 */
 	@Override
-	public int[][] split(int[] values) {
-		return null;
+	public int[][] split(int[] values) {		
+        int evenIndex = 0;
+        int oddIndex = 0;
+        int evenNumbers = 0;
+        int oddNumbers = 0;
+        for (int i = 0; i < values.length; i++) {
+            if (values[i] % 2 == 0) {
+                evenNumbers++;
+            } else {
+                oddNumbers++;
+            }
+        }
+        int[][] splittedValues = new int[2][];
+        splittedValues[0] = new int[evenNumbers];
+        splittedValues[1] = new int[oddNumbers];
+        for (int i = 0; i < values.length; i++) {
+            if (values[i] % 2 == 0) {
+                splittedValues[0][evenIndex] = values[i];
+                evenIndex++;
+            } else {
+                splittedValues[1][oddIndex] = values[i];
+                oddIndex++;
+            }
+        }
+        return splittedValues;
 	}
 
 }
